@@ -2011,13 +2011,13 @@ a {
 
 
 h1 {
-  font-size: 60px;
+  font-size: clamp(4rem, 6vw, 5rem);
   font-weight: bold;
   color: #2294f2;
 }
 
 h2 {
-  font-size: 36px;
+  font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: bold;
 }
 
@@ -2189,9 +2189,6 @@ h3 {
 }
 
 .about-header {
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 32px;
   text-align: center;
 }
 
@@ -2199,6 +2196,7 @@ h3 {
   font-size: 18px;
   line-height: 1.8;
   text-align: justify;
+  margin-top: 30px;
 }
 
 .highlight-box {
@@ -2347,12 +2345,10 @@ h3 {
   }
 
   .header h1 {
-    font-size: 42px;
     margin-bottom: 20px;
   }
 
   .header h2 {
-    font-size: 20px;
     margin-bottom: 20px;
   }
 
