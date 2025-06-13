@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DacaVet</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="SHORTCUT ICON" href="./img/animals.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="./style.css">
+
+
+  <style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Montserrat", sans-serif
+    }
+
+    @media only screen and (max-width: 600px) {
+      #main {
+        margin-left: 0
+      }
+    }
+  </style>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+      m[i].l = 1 * new Date();
+      for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    ym(97715942, "init", {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true
+    });
+  </script>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/97715942" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
+</head>
+
+<body style="display: flex; flex-direction: column;">
+
+  <div class="nav-bar">
+    <div class="nav-content">
+      <div class="logo">
+        <a href="#"><img src="./img/animals.png" class="nav-img" alt="Logo" /></a>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">O nama</a>
+        <a href="#services">Usluge</a>
+        <a href="#gallery">Galerija</a>
+        <a href="#contact">Kontakt</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+        <i id="menuIcon" class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- Page Content -->
+  <div class="container" id="main" style="max-width: 1200px; padding: 0; margin-top: 80px;">
+
+    <header id="home">
+      <div class="w3-row w3-container header">
+
+        <div class="w3-col s12 m6">
+          <h1 style="margin-bottom: 50px;">DačaVet</h1>
+          <h2>Veterinarska ambulanta Kragujevac</h2>
+          <a href="tel:+381" id="contactBtn" class="w3-button w3-blue w3-large">Zakažite pregled</a>
+        </div>
+
+        <div class="w3-col w3-image s12 m6 w3-center">
+          <img src="./img/animals.png" alt="animals" style="max-width: 100%; height: auto;">
+        </div>
+
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <div class="about-section w3-container" id="about">
+      <h2 class="about-header w3-text-dark-grey">O nama</h2>
+
+      <div class="about-text">
+        <p>
+          Dobrodošli u našu veterinarsku stanicu — mesto gde je zdravlje i dobrobit vaših ljubimaca na prvom mestu.
+          Sa više od 10 godina iskustva, naš tim stručnjaka posvećen je pružanju vrhunske nege za sve vrste kućnih
+          ljubimaca.
+        </p>
+
+        <p>
+          Naša misija je da svakom ljubimcu pružimo pažnju, ljubav i stručnu negu koju zaslužuje.
+          Kroz savremene metode lečenja, redovne preglede i preventivne mere, trudimo se da vaš ljubimac bude zdrav i
+          srećan tokom celog života.
+        </p>
+
+        <div class="highlight-box">
+          <h3>Zašto izabrati nas?</h3>
+          <ul class="w3-ul">
+            <li>Stručan i posvećen tim veterinara</li>
+            <li>Savremena oprema i dijagnostika</li>
+            <li>Ljubazan pristup i individualna nega</li>
+            <li>Dugogodišnje poverenje brojnih klijenata</li>
+          </ul>
+        </div>
+
+        <p class="w3-margin-top">
+          Posetite nas i uverite se zašto smo pravi izbor za vas i vašeg vernog prijatelja. Vaše poverenje nam je
+          najvažnije.
+        </p>
+      </div>
+    </div>
+
+    <!-- End About Section -->
+
+    <!-- Services Section -->
+    <div class="services-section w3-container" id="services">
+      <h2 class="w3-center w3-text-dark-grey">Naše usluge</h2>
+
+      <div class="w3-row-padding w3-center" style="margin-top: 50px;">
+
+        <div class="w3-third w3-padding">
+          <div class="service-box w3-animate-opacity">
+            <img src="https://img.icons8.com/color/96/stethoscope.png" alt="pregledi" class="service-icon">
+            <div class="service-title">Pregledi</div>
+            <div class="service-desc">Redovni pregledi obezbeđuju ranu dijagnostiku i bolju prevenciju.</div>
+          </div>
+        </div>
+
+        <div class="w3-third w3-padding">
+          <div class="service-box w3-animate-opacity">
+            <img src="https://img.icons8.com/color/96/stethoscope.png" alt="pregledi" class="service-icon">
+            <div class="service-title">Pregledi</div>
+            <div class="service-desc">Redovni pregledi obezbeđuju ranu dijagnostiku i bolju prevenciju.</div>
+          </div>
+        </div>
+
+        <div class="w3-third w3-padding">
+          <div class="service-box w3-animate-opacity">
+            <img src="https://img.icons8.com/color/96/stethoscope.png" alt="pregledi" class="service-icon">
+            <div class="service-title">Pregledi</div>
+            <div class="service-desc">Redovni pregledi obezbeđuju ranu dijagnostiku i bolju prevenciju.</div>
+          </div>
+        </div>
+
+        <div class="w3-third w3-padding">
+          <div class="service-box w3-animate-opacity">
+            <img src="https://img.icons8.com/color/96/stethoscope.png" alt="pregledi" class="service-icon">
+            <div class="service-title">Pregledi</div>
+            <div class="service-desc">Redovni pregledi obezbeđuju ranu dijagnostiku i bolju prevenciju.</div>
+          </div>
+        </div>
+
+        <div class="w3-third w3-padding">
+          <div class="service-box w3-animate-opacity">
+            <img src="https://img.icons8.com/color/96/stethoscope.png" alt="pregledi" class="service-icon">
+            <div class="service-title">Pregledi</div>
+            <div class="service-desc">Redovni pregledi obezbeđuju ranu dijagnostiku i bolju prevenciju.</div>
+          </div>
+        </div>
+
+        <div class="w3-third w3-padding">
+          <div class="service-box w3-animate-opacity">
+            <img src="https://img.icons8.com/color/96/stethoscope.png" alt="pregledi" class="service-icon">
+            <div class="service-title">Pregledi</div>
+            <div class="service-desc">Redovni pregledi obezbeđuju ranu dijagnostiku i bolju prevenciju.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Gallery Section -->
+    <div class="w3-content" id="gallery">
+      <strong>
+        <h2 class="w3-center w3-text-dark-grey">Galerija</h2>
+      </strong>
+
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="./img/IMG_0530.jpeg" alt="Opis slike 1">
+        </div>
+        <div class="gallery-item">
+          <img src="./img/IMG_0530.jpeg" alt="Opis slike 2">
+        </div>
+        <div class="gallery-item">
+          <img src="./img/IMG_0530.jpeg" alt="Opis slike 1">
+        </div>
+        <div class="gallery-item">
+          <img src="./img/IMG_0530.jpeg" alt="Opis slike 2">
+        </div>
+        <div class="gallery-item">
+          <img src="./img/IMG_0530.jpeg" alt="Opis slike 1">
+        </div>
+        <div class="gallery-item">
+          <img src="./img/IMG_0530.jpeg" alt="Opis slike 2">
+        </div>
+      </div>
+
+    </div>
+    <!-- End Gallery Section -->
+
+    <!-- Contact Section -->
+    <div class="w3-content" id="contact">
+
+      <h2 class="w3-center w3-xxlarge w3-margin-bottom">Kontakt</h2>
+      <hr class="w3-opacity w3-center w3-margin-top">
+
+      <div class="w3-row-padding w3-margin-top">
+
+        <div class="w3-half w3-padding">
+          <h3>Kontakt podaci:</h3>
+          <ul class="w3-ul">
+            <li>
+              <span>Broj telefona: <a href="tel:"></a> </span>
+            </li>
+            <li>
+              <span>Email: <a href="mailto:"></a></span>
+            </li>
+
+          </ul>
+
+          <h3 class="w3-margin-top">Radno vreme:</h3>
+          <ul class="w3-ul">
+            <li>Ponedeljak - Petak: </li>
+            <li>Subota: </li>
+            <li>Nedelja: </li>
+          </ul>
+        </div>
+
+        <div class="w3-half w3-padding">
+          <h3>Adresa:</h3>
+          <ul class="w3-ul">
+            <li>Kragujevac</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="w3-center w3-margin-top">
+        <a href="" class="w3-xlarge w3-margin-right">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="w3-xlarge w3-margin-right">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </div>
+      <hr class="w3-opacity w3-center w3-margin-top">
+    </div>
+    <!-- End Contact Section -->
+
+    <!-- Footer -->
+    <div class="text-center p-4 text-muted">
+      <p style="font-size: 13px;"> © 2025 IT Akademija Himera Kragujevac,
+        <a style="font-size: 14px;" href="https://www.himera.rs/home">www.himera.rs</a>
+      </p>
+    </div>
+
+    <!-- END PAGE CONTENT -->
+  </div>
+  <script src="./app.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
