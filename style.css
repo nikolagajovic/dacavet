@@ -2009,6 +2009,9 @@ a {
   margin-top: 150px;
 }
 
+#contactBtn:hover {
+  text-decoration: none;
+}
 
 h1 {
   font-size: clamp(4rem, 6vw, 5rem);
@@ -2029,6 +2032,14 @@ h3 {
 #contact {
   margin: auto;
   padding: 64px 16px;
+}
+
+#contact li {
+  font-size: 16px;
+}
+
+#contact li a:hover {
+  color: #007bff;
 }
 
 #gallery {
@@ -2097,6 +2108,12 @@ h3 {
 .icon i {
   font-size: 36px;
   color: #2294f2;
+}
+
+.transparent-navbar {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(3px);
+  transition: background-color 0.3s ease;
 }
 
 .services-section {
@@ -2212,41 +2229,6 @@ h3 {
   color: #0d47a1;
 }
 
-.contact-info {
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-
-.contact-info ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.contact-info li {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.contact-info li .icon {
-  width: 30px;
-  text-align: center;
-  margin-right: 10px;
-}
-
-.contact-info li .icon i {
-  font-size: 20px;
-}
-
-.contact-info li a {
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.contact-info li a:hover {
-  color: #007bff;
-}
 
 .gallery {
   display: grid;
@@ -2258,6 +2240,7 @@ h3 {
 
 .gallery-item {
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .gallery-item img {
@@ -2271,6 +2254,54 @@ h3 {
   transform: scale(1.1);
 }
 
+.map-container {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  margin-top: 20px;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 12px;
+}
+
+#scrollTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 999;
+  width: 50px;
+  height: 50px;
+  border: none;
+  outline: none;
+  background-color: rgba(34, 148, 242, 0.7);
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s ease;
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+}
+
+#scrollTopBtn:hover {
+  background-color: rgba(34, 148, 242, 1);
+  transform: scale(1.1);
+}
+
+#scrollTopBtn i {
+  font-size: 20px;
+}
 
 .w3-sidebar a {
   text-decoration: none;
@@ -2394,4 +2425,53 @@ h3 {
   .item-5 {
     grid-area: item-5;
   }
+}
+
+/*animations*/
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-box {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  animation: none;
+}
+
+.service-box.visible {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.service-box.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.service-box.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.service-box.delay-3 {
+  animation-delay: 0.6s;
+}
+
+.map-container {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.map-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
 }

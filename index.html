@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="SHORTCUT ICON" href="./img/animals.png">
- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
 
 
 
@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <link rel="stylesheet" href="./style.css">
-
 
   <style>
     body,
@@ -58,7 +57,7 @@
 
 <body style="display: flex; flex-direction: column;">
 
-  <div class="nav-bar">
+  <div id="navbar" class="nav-bar">
     <div class="nav-content">
       <div class="logo">
         <a href="#"><img src="./img/animals.png" class="nav-img" alt="Logo" /></a>
@@ -85,7 +84,7 @@
         <div class="w3-col s12 m6">
           <h1 style="margin-bottom: 50px;">DačaVet</h1>
           <h2>Veterinarska ambulanta Kragujevac</h2>
-          <a href="tel:+381" id="contactBtn" class="w3-button w3-blue w3-large">Zakažite pregled</a>
+          <a href="tel:+38163569883" id="contactBtn" class="w3-button w3-blue w3-large">Zakažite pregled</a>
         </div>
 
         <div class="w3-col w3-image s12 m6 w3-center">
@@ -96,7 +95,7 @@
     </header>
 
     <!-- About Section -->
-    <div class="about-section w3-container" id="about">
+    <div class="about-section w3-container" fade-in-section id="about">
       <h2 class="w3-center w3-text-dark-grey">O nama</h2>
 
       <div class="about-text">
@@ -132,7 +131,7 @@
     <!-- End About Section -->
 
     <!-- Services Section -->
-    <div class="services-section w3-container" id="services">
+    <div class="services-section w3-container" fade-in-section id="services">
       <h2 class="w3-center w3-text-dark-grey">Naše usluge</h2>
 
       <div class="w3-row-padding w3-center" style="margin-top: 50px;">
@@ -190,7 +189,7 @@
 
 
     <!-- Gallery Section -->
-    <div class="w3-content" id="gallery">
+    <div class="w3-content" fade-in-section id="gallery">
       <strong>
         <h2 class="w3-center w3-text-dark-grey">Galerija</h2>
       </strong>
@@ -231,10 +230,10 @@
           <h3>Kontakt podaci:</h3>
           <ul class="w3-ul">
             <li>
-              <span>Broj telefona: <a href="tel:"></a> </span>
+              <span>Broj telefona: <a href="tel:+38163569883"> +381 63 569 883 </a></span>
             </li>
             <li>
-              <span>Email: <a href="mailto:"></a></span>
+              <span>Email: <a href="mailto:dr.daca.vet@gmail.com"> dr.daca.vet@gmail.com </a></span>
             </li>
 
           </ul>
@@ -250,18 +249,25 @@
         <div class="w3-half w3-padding">
           <h3>Adresa:</h3>
           <ul class="w3-ul">
-            <li>Kragujevac</li>
+            <li>Sinđelićeva br. 8 Kragujevac</li>
           </ul>
+
+          <div class="map-container">
+            <iframe src="https://www.google.com/maps?q=Sinđelićeva+8,+Kragujevac&output=embed" allowfullscreen=""
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
         </div>
 
       </div>
 
       <div class="w3-center w3-margin-top">
         <a href="" class="w3-xlarge w3-margin-right">
-          <i class="fab fa-instagram"></i>
+          <i class="fab fa-instagram" style="font-size: 30px;"></i>
         </a>
         <a href="" class="w3-xlarge w3-margin-right">
-          <i class="fab fa-facebook"></i>
+          <i class="fab fa-facebook" style="font-size: 30px;"></i>
         </a>
       </div>
       <hr class="w3-opacity w3-center w3-margin-top">
@@ -277,6 +283,11 @@
 
     <!-- END PAGE CONTENT -->
   </div>
+
+<button onclick="scrollToTop()" id="scrollTopBtn" title="Vrati se na vrh">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
   <script src="./app.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
