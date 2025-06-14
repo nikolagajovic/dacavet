@@ -68,7 +68,7 @@
         <a href="#gallery">Galerija</a>
         <a href="#contact">Kontakt</a>
       </div>
-      <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+      <a href="javascript:void(0);" class="icon">
         <i id="menuIcon" class="fa-solid fa-bars"></i>
       </a>
     </div>
@@ -233,7 +233,7 @@
               <span>Broj telefona: <a href="tel:+38163569883"> +381 63 569 883 </a></span>
             </li>
             <li>
-              <span>Email: <a href="mailto:dr.daca.vet@gmail.com"> dr.daca.vet@gmail.com </a></span>
+              <span>Email: <a href="mailto:dr.daca.vet@gmail.com" target="_blank"> dr.daca.vet@gmail.com </a></span>
             </li>
 
           </ul>
@@ -284,9 +284,14 @@
     <!-- END PAGE CONTENT -->
   </div>
 
-<button onclick="scrollToTop()" id="scrollTopBtn" title="Vrati se na vrh">
+<button id="scrollTopBtn" title="Vrati se na vrh">
   <i class="fas fa-arrow-up"></i>
 </button>
+
+<div id="lightbox" class="lightbox">
+    <span class="close-btn">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" src="" alt="Povećana slika">
+</div>
 
   <script src="./app.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
