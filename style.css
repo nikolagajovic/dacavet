@@ -2058,6 +2058,7 @@ h3 {
   top: 0;
   left: 0;
   z-index: 1000;
+  padding-top: env(safe-area-inset-top);
 }
 
 .nav-content {
