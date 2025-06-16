@@ -2052,7 +2052,8 @@ h3 {
 
 .nav-bar {
   width: 100%;
-  height: 80px;
+  padding-top: env(safe-area-inset-top);
+  height: calc(80px + env(safe-area-inset-top));
   background-color: white;
   display: flex;
   justify-content: center;
@@ -2061,7 +2062,6 @@ h3 {
   top: 0;
   left: 0;
   z-index: 1000;
-  padding-top: env(safe-area-inset-top);
 }
 
 .nav-content {
@@ -2404,6 +2404,11 @@ body:not(.lightbox-open) > *:not(.lightbox) {
 }
 
 @media screen and (max-width: 768px) {
+
+  .nav-bar {
+    padding-top: env(safe-area-inset-top);
+    height: calc(60px + env(safe-area-inset-top));
+  }
 
   .nav-links {
     display: flex;
