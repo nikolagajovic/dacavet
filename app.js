@@ -112,29 +112,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Animacije ---
-    const allObservedElements = [
-        ...document.querySelectorAll('.service-box'),
-        document.querySelector('.map-container')
-    ];
+  const serviceBoxes = document.querySelectorAll('.service-box');
+  const map = document.querySelector('.map-container');
 
-    document.querySelectorAll('.service-box').forEach((box, i) => {
-        box.classList.add(`delay-${i + 1}`);
-    });
+  // Dodavanje delay klasa svakoj kartici redom
+  serviceBoxes.forEach((box, i) => {
+    box.classList.add(`delay-${i + 1}`);
+  });
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            } else {
-                entry.target.classList.remove('visible');
-            }
-        });
-    }, {
-        threshold: 0.2
-    });
+  const allObservedElements = [...serviceBoxes];
+  if (map) allObservedElements.push(map);
 
-    allObservedElements.forEach(el => {
-        observer.observe(el);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
     });
+  }, {
+    threshold: 0.2
+  });
+
+  allObservedElements.forEach(el => observer.observe(el));
+
 
 });
