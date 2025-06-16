@@ -5,11 +5,8 @@ html, body {
   scroll-padding-top: 60px;
   margin: 0;
   background-color: aliceblue;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-   padding-top: calc(80px + env(safe-area-inset-top));
 }
+
 
 *,
 *:before,
@@ -22,8 +19,6 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%
 }
-
-
 
 article,
 aside,
@@ -2058,9 +2053,6 @@ h3 {
   top: 0;
   left: 0;
   z-index: 1000;
-  padding-top: env(safe-area-inset-top);
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
 }
 
 .nav-content {
