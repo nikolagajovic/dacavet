@@ -6,6 +6,7 @@ body {
   scroll-padding-top: 60px;
   margin: 0;
   background-color: aliceblue;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 
@@ -2054,6 +2055,7 @@ h3 {
   top: 0;
   left: 0;
   z-index: 1000;
+  padding-top: env(safe-area-inset-top);
 }
 
 .nav-content {
@@ -2580,4 +2582,36 @@ body:not(.lightbox-open)>*:not(.lightbox) {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.2s;
+}
+
+
+@keyframes floatPulse {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-6px) scale(1.03) rotate(1deg);
+  }
+  50% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  75% {
+    transform: translateY(6px) scale(1.03) rotate(-1deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+.header-img {
+  width: 100%;
+  height: auto;
+  animation: floatPulse 4s ease-in-out infinite;
+  transition: filter 0.4s ease, transform 0.4s ease;
+  will-change: transform;
+}
+
+.header-img:hover {
+  filter: grayscale(100%);
+  transform: scale(1.05);
 }
