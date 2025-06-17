@@ -6,11 +6,6 @@ body {
   scroll-padding-top: 60px;
   margin: 0;
   background-color: aliceblue;
-  padding-top: 80px;
-  /* visina navbara */
-  -webkit-font-smoothing: antialiased;
-  -webkit-overflow-scrolling: touch;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 
@@ -2059,12 +2054,6 @@ h3 {
   top: 0;
   left: 0;
   z-index: 1000;
-  padding-top: constant(safe-area-inset-top);
-  /* stari Safari */
-  padding-top: env(safe-area-inset-top);
-  /* novi Safari */
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -2431,9 +2420,6 @@ body:not(.lightbox-open)>*:not(.lightbox) {
     transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     gap: 0;
     padding: 0;
-    top: calc(80px + env(safe-area-inset-top));
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right)
   }
 
   .nav-links.active {
