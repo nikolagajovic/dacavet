@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => { 
+document.addEventListener('DOMContentLoaded', () => {
     // --- Funkcije za Navigacioni Meni (Hamburger/X) ---
     function toggleMenu() {
         const navLinks = document.getElementById("navLinks");
@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const menuToggleButton = document.querySelector('.icon'); 
+    const menuToggleButton = document.querySelector('.icon');
     if (menuToggleButton) {
         menuToggleButton.addEventListener('click', toggleMenu);
     }
-   
+
     // --- Funkcije za Scroll-to-Top dugme ---
     function scrollToTop() {
         window.scrollTo({
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (navbar) { 
+        if (navbar) {
             if (window.pageYOffset > 50) {
                 navbar.classList.add("transparent-navbar");
             } else {
@@ -62,80 +62,210 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollTopBtn.addEventListener('click', scrollToTop);
     }
 
- // --- Lightbox Galerija ---
-    const galleryItems = document.querySelectorAll('.gallery-item img');
+    // Lightbox Galerija
+    const galleryContainer = document.querySelector('.gallery');
+    const allGalleryItems = galleryContainer ? galleryContainer.querySelectorAll('.gallery-item') : [];
+    const prevPageBtn = document.getElementById('prevPageBtn');
+    const nextPageBtn = document.getElementById('nextPageBtn');
+    const pageNumbersContainer = document.getElementById('pageNumbers');
+
+    const itemsPerPage = 6; // Broj slika po stranici
+    let currentPage = 1;
+    let totalPages = 0;
+
+    // Lightbox elementi
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeBtn = document.querySelector('.close-btn');
+    const prevImgBtn = document.getElementById('prevImgBtn');
+    const nextImgBtn = document.getElementById('nextImgBtn');
     const body = document.body;
 
-    // Funkcija za otvaranje lightboxa
-    galleryItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            // Dodata provera da li svi potrebni elementi postoje pre manipulacije
-            if (lightbox && lightboxImg && body) {
-                lightbox.classList.add('active');
-                lightboxImg.src = e.target.src;
-                body.classList.add('lightbox-open');
-                body.style.overflow = 'hidden';
+    let currentLightboxIndex = 0; // Prati indeks slike koja je trenutno u lightboxu
+
+    // Proveri da li svi potrebni elementi postoje pre nego što se pokrene logika
+    if (galleryContainer && allGalleryItems.length > 0 && prevPageBtn && nextPageBtn && pageNumbersContainer && lightbox && lightboxImg && closeBtn && prevImgBtn && nextImgBtn && body) {
+
+        totalPages = Math.ceil(allGalleryItems.length / itemsPerPage);
+
+        // Funkcija za prikazivanje određene stranice galerije
+        function displayPage(page) {
+            // Sakrij sve slike
+            allGalleryItems.forEach(item => {
+                item.classList.remove('visible-page');
+            });
+
+            // Odredi koje slike treba prikazati na trenutnoj stranici
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, allGalleryItems.length);
+
+            for (let i = startIndex; i < endIndex; i++) {
+                allGalleryItems[i].classList.add('visible-page');
+            }
+
+            // Ažuriraj stanje dugmadi za paginaciju
+            prevPageBtn.disabled = page === 1;
+            nextPageBtn.disabled = page === totalPages;
+
+            // Ažuriraj brojeve stranica
+            updatePageNumbers();
+
+            document.getElementById('gallery').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Funkcija za ažuriranje brojeva stranica
+        function updatePageNumbers() {
+            pageNumbersContainer.innerHTML = ''; // Očisti prethodne brojeve
+            for (let i = 1; i <= totalPages; i++) {
+                const pageSpan = document.createElement('span');
+                pageSpan.textContent = i;
+                pageSpan.classList.add('page-number-item');
+                if (i === currentPage) {
+                    pageSpan.classList.add('active-page');
+                }
+                pageSpan.addEventListener('click', () => {
+                    currentPage = i;
+                    displayPage(currentPage);
+                });
+                pageNumbersContainer.appendChild(pageSpan);
+            }
+        }
+
+        // Event listeneri za dugmad paginacije
+        prevPageBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                displayPage(currentPage);
             }
         });
-    });
 
-    // Funkcija za zatvaranje lightboxa
-    function closeLightbox() {
-        // Dodata provera da li svi potrebni elementi postoje pre manipulacije
-        if (lightbox && body) {
+        nextPageBtn.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayPage(currentPage);
+            }
+        });
+
+        // Inicijalni prikaz prve stranice galerije
+        displayPage(currentPage);
+
+        // --- Lightbox Funkcionalnost sa navigacijom ---
+
+        // Event listener za otvaranje lightboxa
+        allGalleryItems.forEach((item, index) => {
+            const imgElement = item.querySelector('img');
+            if (imgElement) {
+                imgElement.addEventListener('click', () => {
+                    lightbox.classList.add('active');
+                    body.classList.add('lightbox-open');
+                    body.style.overflow = 'hidden'; // Sprečava skrolovanje pozadine
+                    currentLightboxIndex = index;
+                    showLightboxImage(currentLightboxIndex);
+                });
+            }
+        });
+
+        // Funkcija za prikazivanje slike u lightboxu
+        function showLightboxImage(index) {
+            if (index < 0) {
+                currentLightboxIndex = allGalleryItems.length - 1; // Vrati se na poslednju
+            } else if (index >= allGalleryItems.length) {
+                currentLightboxIndex = 0; // Pređi na prvu
+            } else {
+                currentLightboxIndex = index;
+            }
+            lightboxImg.src = allGalleryItems[currentLightboxIndex].querySelector('img').src;
+        }
+
+        // Event listeneri za dugmad u lightboxu
+        prevImgBtn.addEventListener('click', () => {
+            showLightboxImage(currentLightboxIndex - 1);
+        });
+
+        nextImgBtn.addEventListener('click', () => {
+            showLightboxImage(currentLightboxIndex + 1);
+        });
+
+        // Funkcija za zatvaranje lightboxa
+        function closeLightbox() {
             lightbox.classList.remove('active');
             body.classList.remove('lightbox-open');
-            body.style.overflow = 'auto';
+            body.style.overflow = 'auto'; // Vraća skrolovanje pozadine
         }
-    }
 
-    if (closeBtn) {
+        // Event listeneri za zatvaranje lightboxa
         closeBtn.addEventListener('click', closeLightbox);
-    }
-
-    if (lightbox) {
         lightbox.addEventListener('click', (e) => {
-            // Zatvara se samo ako je kliknuto direktno na pozadinu lightboxa
-            if (e.target === lightbox) {
+            // Zatvori lightbox ako se klikne izvan slike ili navigacionih dugmadi
+            if (e.target === lightbox || e.target === closeBtn) {
                 closeLightbox();
             }
         });
+        document.addEventListener('keydown', (e) => {
+            // Zatvori na Escape taster
+            if (lightbox.classList.contains('active') && e.key === 'Escape') {
+                closeLightbox();
+            }
+            // Navigacija strelicama unutar lightboxa
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    showLightboxImage(currentLightboxIndex - 1);
+                } else if (e.key === 'ArrowRight') {
+                    showLightboxImage(currentLightboxIndex + 1);
+                }
+            }
+        });
+
+    } else {
+        // Ako nema dovoljno slika za paginaciju, ili nedostaju elementi za paginaciju/lightbox,
+        // sakrij dugmad paginacije i prikaži sve slike u galeriji (bez paginacije).
+        if (prevPageBtn) prevPageBtn.style.display = 'none';
+        if (nextPageBtn) nextPageBtn.style.display = 'none';
+        if (pageNumbersContainer) pageNumbersContainer.style.display = 'none';
+
+        // Prikaz svih slika ako paginacija nije aktivna
+        allGalleryItems.forEach(item => {
+            item.classList.add('visible-page'); // Prikazuje sve slike
+        });
+
+        // Ako galerija postoji, ali lightbox ili njegova dugmad ne postoje,
+        // onemogući lightbox funkcionalnost na slikama.
+        if (galleryContainer) {
+            allGalleryItems.forEach(item => {
+                const imgElement = item.querySelector('img');
+                if (imgElement) {
+                    imgElement.style.cursor = 'default'; // Ukloni pointer kursor
+                }
+            });
+        }
     }
 
-    document.addEventListener('keydown', (e) => {
-        if (lightbox && lightbox.classList.contains('active') && e.key === 'Escape') {
-            closeLightbox();
-        }
-    });
 
     // --- Animacije ---
-  const serviceBoxes = document.querySelectorAll('.service-box');
-  const map = document.querySelector('.map-container');
+    const serviceBoxes = document.querySelectorAll('.service-box');
+    const map = document.querySelector('.map-container');
 
-  // Dodavanje delay klasa svakoj kartici redom
-  serviceBoxes.forEach((box, i) => {
-    box.classList.add(`delay-${i + 1}`);
-  });
-
-  const allObservedElements = [...serviceBoxes];
-  if (map) allObservedElements.push(map);
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      } else {
-        entry.target.classList.remove('visible');
-      }
+    // Dodavanje delay klasa svakoj kartici redom
+    serviceBoxes.forEach((box, i) => {
+        box.classList.add(`delay-${i + 1}`);
     });
-  }, {
-    threshold: 0.2
-  });
 
-  allObservedElements.forEach(el => observer.observe(el));
+    const allObservedElements = [...serviceBoxes];
+    if (map) allObservedElements.push(map);
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    allObservedElements.forEach(el => observer.observe(el));
 
 
 });

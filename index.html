@@ -247,7 +247,7 @@
 
 
     <!-- Gallery Section -->
-    <div class="w3-content" fade-in-section id="gallery">
+    <div class="w3-content" id="gallery">
       <strong>
         <h2 class="w3-center w3-text-dark-grey">Galerija</h2>
       </strong>
@@ -271,8 +271,29 @@
         <div class="gallery-item">
           <img src="./img/slika_proba.jpeg" alt="Opis slike 6">
         </div>
+        <div class="gallery-item">
+          <img src="./img/slika_proba.jpeg" alt="Opis slike 7">
+        </div>
+        <div class="gallery-item">
+          <img src="./img/slika_proba.jpeg" alt="Opis slike 8">
+        </div>
+        <div class="gallery-item">
+          <img src="./img/sertifikat.jpg" alt="Opis slike 9">
+        </div>
       </div>
 
+      <div class="pagination">
+        <button id="prevPageBtn" class="pagination-btn">&laquo; Prethodna</button>
+        <div id="pageNumbers" class="page-numbers"></div>
+        <button id="nextPageBtn" class="pagination-btn">Sledeća &raquo;</button>
+      </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Lightbox Image">
+        <a class="prev-img-btn" id="prevImgBtn">&#10094;</a>
+        <a class="next-img-btn" id="nextImgBtn">&#10095;</a>
     </div>
     <!-- End Gallery Section -->
 
