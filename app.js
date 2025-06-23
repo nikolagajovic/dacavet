@@ -24,6 +24,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+     function closeMenu() {
+        const navLinks = document.getElementById("navLinks");
+        const menuIcon = document.getElementById("menuIcon");
+        if (navLinks && menuIcon && navLinks.classList.contains("active")) {
+            navLinks.classList.remove("active");
+            menuIcon.classList.remove("rotated");
+            menuIcon.classList.remove("fa-times");
+            menuIcon.classList.add("fa-bars");
+            const iconContainer = menuIcon.parentElement;
+            if (iconContainer) {
+                iconContainer.setAttribute("aria-expanded", false);
+            }
+        }
+    }
+    
+     document.addEventListener('click', (event) => {
+        const navBar = document.getElementById('navbar'); 
+        const navLinksContainer = document.getElementById("navLinks"); 
+
+        if (navBar && navBar.contains(event.target)) {
+            return; 
+        }
+
+        // Ako je kliknuto van nav bara, a meni je otvoren, zatvori ga.
+        if (navLinksContainer && navLinksContainer.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
+
     const menuToggleButton = document.querySelector('.icon');
     if (menuToggleButton) {
         menuToggleButton.addEventListener('click', toggleMenu);
