@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-     function closeMenu() {
+    function closeMenu() {
         const navLinks = document.getElementById("navLinks");
         const menuIcon = document.getElementById("menuIcon");
         if (navLinks && menuIcon && navLinks.classList.contains("active")) {
@@ -38,13 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-    
-     document.addEventListener('click', (event) => {
-        const navBar = document.getElementById('navbar'); 
-        const navLinksContainer = document.getElementById("navLinks"); 
+
+    document.addEventListener('click', (event) => {
+        const navBar = document.getElementById('navbar');
+        const navLinksContainer = document.getElementById("navLinks");
 
         if (navBar && navBar.contains(event.target)) {
-            return; 
+            return;
         }
 
         // Ako je kliknuto van nav bara, a meni je otvoren, zatvori ga.
@@ -204,7 +204,16 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 currentLightboxIndex = index;
             }
-            lightboxImg.src = allGalleryItems[currentLightboxIndex].querySelector('img').src;
+            const imgElement = allGalleryItems[currentLightboxIndex].querySelector('img');
+            if (imgElement) {
+                lightboxImg.src = imgElement.src;
+
+                // Prikazi broj slika
+                const counter = document.getElementById('lightbox-counter');
+                if (counter) {
+                    counter.textContent = `${currentLightboxIndex + 1} / ${allGalleryItems.length}`;
+                }
+            }
         }
 
         // Event listeneri za dugmad u lightboxu
